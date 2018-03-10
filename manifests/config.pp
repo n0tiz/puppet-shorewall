@@ -1,2 +1,2 @@
-class n0tiz-shorewall::config {
+class shorewall::config {
 }

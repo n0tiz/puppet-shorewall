@@ -1,6 +1,9 @@
-class n0tiz-shorewall inherits n0tiz-shorewall::params {
-  class{'n0tiz-shorewall::install': } ->
-  class{'n0tiz-shorewall::config': } ->
-  class{'n0tiz-shorewall::service': } ->
-  Class['n0tiz-shorewall']
+class shorewall inherits shorewall::params {
+  contain shorewall::install
+  contain shorewall::config
+  contain shorewall::service
+
+  Class['::shorewall::install']
+  -> Class['::shorewall::config']
+  ~> Class['::shorewall::service']
 }

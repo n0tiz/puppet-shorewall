@@ -1,4 +1,4 @@
-class n0tiz-shorewall::service {
+class shorewall::service {
   if $shorewall::service_manage == true {
     service { 'ntp':
       ensure     => $shorewall::service_ensure,
