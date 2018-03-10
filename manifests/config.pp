@@ -1,2 +1,2 @@
-class puppet-shorewall::config {
+class n0tiz-shorewall::config {
 }

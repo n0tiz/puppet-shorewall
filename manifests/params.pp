@@ -1,3 +1,3 @@
-class puppet-shorewall::params {
+class n0tiz-shorewall::params {
 
 }
