@@ -1,0 +1,3 @@
+class puppet-shorewall::params {
+
+}
