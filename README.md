@@ -1,1 +1,1 @@
-# n0tiz-shorewall
+# puppet-shorewall
