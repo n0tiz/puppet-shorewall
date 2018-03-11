@@ -6,7 +6,7 @@ class shorewall::params (
   String $service_name,
   Optional[String] $service_provider,
   Boolean $service_enable,
-  Enum['running', 'stopped'] $service_ensure,
+  Enum['running', 'stopped'] $service_ensure
 ) {
 
 }
