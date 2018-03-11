@@ -1,6 +1,6 @@
 class shorewall::service {
   if $shorewall::service_manage == true {
-    service { 'ntp':
+    service { 'shorewall':
       ensure     => $shorewall::service_ensure,
       enable     => $shorewall::service_enable,
       name       => $shorewall::service_name,
