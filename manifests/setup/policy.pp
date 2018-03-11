@@ -1,0 +1,3 @@
+define shorewall::setup::policy (
+) {
+}
