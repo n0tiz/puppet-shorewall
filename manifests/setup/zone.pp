@@ -1,6 +1,6 @@
 define shorewall::setup::zone (
   String $zone,
-  Enum['ipv4', 'firewall'] $type,
+  Enum['ip', 'ipv4', 'ipv6', 'ipsec', 'ipsec4', 'ipsec6', 'firewall', 'bport', 'vserver', 'loopback', 'local'] $type,
   Array[String] $options = [],
   Array[String] $in_options = [],
   Array[String] $out_options = []
