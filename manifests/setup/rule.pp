@@ -26,7 +26,7 @@ define shorewall::setup::rule (
       target => '/etc/shorewall/rules',
     }
   }
-  concat::fragment {"rule-${title}"
+  concat::fragment {"rule-${title}":
     content => template('shorewall/rule.erb'),
     target => '/etc/shorewall/rules',
   }

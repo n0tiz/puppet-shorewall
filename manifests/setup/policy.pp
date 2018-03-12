@@ -20,7 +20,7 @@ define shorewall::setup::policy (
       target => '/etc/shorewall/policy',
     }
   }
-  concat::fragment {"policy-${title}"
+  concat::fragment {"policy-${title}":
     content => template('shorewall/policy.erb'),
     target => '/etc/shorewall/policy',
   }

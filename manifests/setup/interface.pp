@@ -17,7 +17,7 @@ define shorewall::setup::interface (
       target => '/etc/shorewall/interfaces',
     }
   }
-  concat::fragment {"interface-${title}"
+  concat::fragment {"interface-${title}":
     content => template('shorewall/interface.erb'),
     target => '/etc/shorewall/interfaces',
   }

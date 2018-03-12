@@ -19,7 +19,7 @@ define shorewall::setup::zone (
       target => '/etc/shorewall/zones',
     }
   }
-  concat::fragment {"zone-${title}"
+  concat::fragment {"zone-${title}":
     content => template('shorewall/zone.erb'),
     target => '/etc/shorewall/zones',
   }
