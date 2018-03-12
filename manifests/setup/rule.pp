@@ -2,15 +2,15 @@ define shorewall::setup::rule (
   String $action,
   String $source,
   String $dest,
-  String $proto,
-  String $dport,
-  String $sport,
-  String $origdest,
-  String $rate,
-  String $user,
-  String $mark,
-  String $connlimit,
-  String $time
+  String $proto = '',
+  String $dport = '',
+  String $sport = '',
+  String $origdest = '',
+  String $rate = '',
+  String $user = '',
+  String $mark = '',
+  String $connlimit = '',
+  String $time = ''
 ) {
   if ! defined(Concat['/etc/shorewall/rules']) {
     concat {'/etc/shorewall/rules':
