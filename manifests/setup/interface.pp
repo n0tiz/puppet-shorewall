@@ -1,7 +1,7 @@
 define shorewall::setup::interface (
   String $zone,
   String $interface,
-  Array[String] $options
+  Array[String] $options = []
 ) {
   if ! defined(Concat['/etc/shorewall/interfaces']) {
     concat {'/etc/shorewall/interfaces':
