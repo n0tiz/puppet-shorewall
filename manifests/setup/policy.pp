@@ -16,7 +16,7 @@ define shorewall::setup::policy (
       path => '/etc/shorewall/policy',
     }
     concat::fragment {'/etc/shorewall/policy-header':
-      source => 'puppet:///modules/shorewall/policy-header'
+      source => 'puppet:///modules/shorewall/policy-header',
       target => '/etc/shorewall/policy',
     }
   }

@@ -15,7 +15,7 @@ define shorewall::setup::zone (
       path => '/etc/shorewall/zones',
     }
     concat::fragment {'/etc/shorewall/zone-header':
-      source => 'puppet:///modules/shorewall/zone-header'
+      source => 'puppet:///modules/shorewall/zone-header',
       target => '/etc/shorewall/zones',
     }
   }
