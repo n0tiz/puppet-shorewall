@@ -20,8 +20,17 @@ define shorewall::setup::policy (
       target => '/etc/shorewall/policy',
     }
   }
-  concat::fragment {"policy-${title}":
-    content => template('shorewall/policy.erb'),
-    target => '/etc/shorewall/policy',
+  if $source == 'all' and $dest == 'all' {
+    concat::fragment {"policy-${title}":
+      order => '20',
+      content => template('shorewall/policy.erb'),
+      target => '/etc/shorewall/policy',
+    }
+  } else {
+    concat::fragment {"policy-${title}":
+      order => '10',
+      content => template('shorewall/policy.erb'),
+      target => '/etc/shorewall/policy',
+    }
   }
 }
