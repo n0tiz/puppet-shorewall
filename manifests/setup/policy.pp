@@ -1,10 +1,10 @@
 define shorewall::setup::policy (
   String $source,
   String $dest,
-  String $policy,
-  String $loglevel,
-  String $rate,
-  String $connlimit
+  Enum['ACCEPT', 'DROP', 'REJECT', 'BLACKLIST', 'QUEUE', 'NFQUEUE', 'CONTINUE', 'NONE'] $policy,
+  String $loglevel = '',
+  String $rate = '',
+  String $connlimit = ''
 ) {
   if ! defined(Concat['/etc/shorewall/policy']) {
     concat {'/etc/shorewall/policy':
