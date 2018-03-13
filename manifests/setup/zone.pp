@@ -5,6 +5,10 @@ define shorewall::setup::zone (
   Array[String] $in_options = [],
   Array[String] $out_options = []
 ) {
+  $notify = undef
+  if $shorewall::service_manage == true {
+    $notify = Service['shorewall']
+  }
   if ! defined(Concat['/etc/shorewall/zones']) {
     concat {'/etc/shorewall/zones':
       ensure => present,
@@ -13,16 +17,19 @@ define shorewall::setup::zone (
       group => root,
       mode => '0644',
       path => '/etc/shorewall/zones',
+      notify => $notify,
     }
     concat::fragment {'zone-header':
       source => 'puppet:///modules/shorewall/zone-header',
       target => '/etc/shorewall/zones',
       order => 1,
+      notify => $notify,
     }
   }
   concat::fragment {"zone-${title}":
     content => template('shorewall/zone.erb'),
     target => '/etc/shorewall/zones',
     order => 2,
+    notify => $notify,
   }
 }

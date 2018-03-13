@@ -6,6 +6,14 @@ define shorewall::setup::policy (
   String $rate = '',
   String $connlimit = ''
 ) {
+  $notify = undef
+  if $shorewall::service_manage == true {
+    $notify = Service['shorewall']
+  }
+  $order = 2
+  if $source == 'all' and $dest == 'all' {
+    $order = 3
+  }
   if ! defined(Concat['/etc/shorewall/policy']) {
     concat {'/etc/shorewall/policy':
       ensure => present,
@@ -14,24 +22,19 @@ define shorewall::setup::policy (
       group => root,
       mode => '0644',
       path => '/etc/shorewall/policy',
+      notify => $notify,
     }
     concat::fragment {'policy-header':
       source => 'puppet:///modules/shorewall/policy-header',
       target => '/etc/shorewall/policy',
       order => 1,
+      notify => $notify,
     }
   }
-  if $source == 'all' and $dest == 'all' {
-    concat::fragment {"policy-${title}":
-      content => template('shorewall/policy.erb'),
-      target => '/etc/shorewall/policy',
-      order => 3,
-    }
-  } else {
-    concat::fragment {"policy-${title}":
-      content => template('shorewall/policy.erb'),
-      target => '/etc/shorewall/policy',
-      order => 2,
-    }
+  concat::fragment {"policy-${title}":
+    content => template('shorewall/policy.erb'),
+    target => '/etc/shorewall/policy',
+    order => $order,
+    notify => $notify,
   }
 }
