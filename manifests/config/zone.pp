@@ -1,4 +1,4 @@
-define shorewall::setup::zone (
+define shorewall::config::zone (
   String $zone,
   Enum['ip', 'ipv4', 'ipv6', 'ipsec', 'ipsec4', 'ipsec6', 'firewall', 'bport', 'vserver', 'loopback', 'local'] $type,
   Array[String] $options = [],

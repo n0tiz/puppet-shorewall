@@ -1,4 +1,4 @@
-define shorewall::setup::rule (
+define shorewall::config::rule (
   String $action,
   String $source,
   String $dest,

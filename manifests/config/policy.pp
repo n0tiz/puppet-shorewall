@@ -1,4 +1,4 @@
-define shorewall::setup::policy (
+define shorewall::config::policy (
   String $source,
   String $dest,
   Enum['ACCEPT', 'DROP', 'REJECT', 'BLACKLIST', 'QUEUE', 'NFQUEUE', 'CONTINUE', 'NONE'] $policy,

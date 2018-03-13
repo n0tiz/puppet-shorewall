@@ -1,4 +1,4 @@
-define shorewall::setup::interface (
+define shorewall::config::interface (
   String $zone,
   String $interface,
   Array[String] $options = []
