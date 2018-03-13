@@ -14,7 +14,7 @@ define shorewall::setup::zone (
       mode => '0644',
       path => '/etc/shorewall/zones',
     }
-    concat::fragment {'/etc/shorewall/zone-header':
+    concat::fragment {'zone-header':
       source => 'puppet:///modules/shorewall/zone-header',
       target => '/etc/shorewall/zones',
     }

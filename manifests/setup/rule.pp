@@ -21,7 +21,7 @@ define shorewall::setup::rule (
       mode => '0644',
       path => '/etc/shorewall/rules',
     }
-    concat::fragment {'/etc/shorewall/rule-header':
+    concat::fragment {'rule-header':
       source => 'puppet:///modules/shorewall/rule-header',
       target => '/etc/shorewall/rules',
     }

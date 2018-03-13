@@ -12,7 +12,7 @@ define shorewall::setup::interface (
       mode => '0644',
       path => '/etc/shorewall/interfaces',
     }
-    concat::fragment {'/etc/shorewall/interfaces-header':
+    concat::fragment {'interfaces-header':
       source => 'puppet:///modules/shorewall/interface-header',
       target => '/etc/shorewall/interfaces',
     }
