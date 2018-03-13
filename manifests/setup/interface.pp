@@ -3,9 +3,10 @@ define shorewall::setup::interface (
   String $interface,
   Array[String] $options = []
 ) {
-  $notify = undef
   if $shorewall::service_manage == true {
     $notify = Service['shorewall']
+  } else {
+    $notify = undef
   }
   if ! defined(Concat['/etc/shorewall/interfaces']) {
     concat {'/etc/shorewall/interfaces':

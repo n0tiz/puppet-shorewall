@@ -6,13 +6,15 @@ define shorewall::setup::policy (
   String $rate = '',
   String $connlimit = ''
 ) {
-  $notify = undef
   if $shorewall::service_manage == true {
     $notify = Service['shorewall']
+  } else {
+    $notify = undef
   }
-  $order = 2
   if $source == 'all' and $dest == 'all' {
     $order = 3
+  } else {
+    $order = 2
   }
   if ! defined(Concat['/etc/shorewall/policy']) {
     concat {'/etc/shorewall/policy':

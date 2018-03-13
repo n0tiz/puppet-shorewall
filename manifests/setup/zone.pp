@@ -5,9 +5,10 @@ define shorewall::setup::zone (
   Array[String] $in_options = [],
   Array[String] $out_options = []
 ) {
-  $notify = undef
   if $shorewall::service_manage == true {
     $notify = Service['shorewall']
+  } else {
+    $notify = undef
   }
   if ! defined(Concat['/etc/shorewall/zones']) {
     concat {'/etc/shorewall/zones':

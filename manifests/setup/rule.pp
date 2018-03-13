@@ -12,9 +12,10 @@ define shorewall::setup::rule (
   String $connlimit = '',
   String $time = ''
 ) {
-  $notify = undef
   if $shorewall::service_manage == true {
     $notify = Service['shorewall']
+  } else {
+    $notify = undef
   }
   if ! defined(Concat['/etc/shorewall/rules']) {
     concat {'/etc/shorewall/rules':
