@@ -24,10 +24,12 @@ define shorewall::setup::rule (
     concat::fragment {'rule-header':
       source => 'puppet:///modules/shorewall/rule-header',
       target => '/etc/shorewall/rules',
+      order => 1,
     }
   }
   concat::fragment {"rule-${title}":
     content => template('shorewall/rule.erb'),
     target => '/etc/shorewall/rules',
+    order => 2,
   }
 }

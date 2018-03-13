@@ -17,10 +17,12 @@ define shorewall::setup::zone (
     concat::fragment {'zone-header':
       source => 'puppet:///modules/shorewall/zone-header',
       target => '/etc/shorewall/zones',
+      order => 1,
     }
   }
   concat::fragment {"zone-${title}":
     content => template('shorewall/zone.erb'),
     target => '/etc/shorewall/zones',
+    order => 2,
   }
 }

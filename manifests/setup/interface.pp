@@ -15,10 +15,12 @@ define shorewall::setup::interface (
     concat::fragment {'interfaces-header':
       source => 'puppet:///modules/shorewall/interface-header',
       target => '/etc/shorewall/interfaces',
+      order => 1,
     }
   }
   concat::fragment {"interface-${title}":
     content => template('shorewall/interface.erb'),
     target => '/etc/shorewall/interfaces',
+    order => 2,
   }
 }

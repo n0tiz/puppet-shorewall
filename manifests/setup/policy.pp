@@ -18,19 +18,20 @@ define shorewall::setup::policy (
     concat::fragment {'policy-header':
       source => 'puppet:///modules/shorewall/policy-header',
       target => '/etc/shorewall/policy',
+      order => 1,
     }
   }
   if $source == 'all' and $dest == 'all' {
     concat::fragment {"policy-${title}":
-      order => '20',
       content => template('shorewall/policy.erb'),
       target => '/etc/shorewall/policy',
+      order => 3,
     }
   } else {
     concat::fragment {"policy-${title}":
-      order => '10',
       content => template('shorewall/policy.erb'),
       target => '/etc/shorewall/policy',
+      order => 2,
     }
   }
 }
