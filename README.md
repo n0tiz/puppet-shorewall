@@ -1,3 +1,5 @@
-# puppet-shorewall
+# shorewall
 
-Only tested on archlinux.
+## Overview
+
+This module allows you to install, configure and manage shorewall.
