@@ -1,7 +1,9 @@
 class shorewall (
+# package parameters
   Boolean $package_manage,
   Array[String] $package_name,
   String $package_ensure,
+# service parameters
   Boolean $service_manage,
   String $service_name,
   Optional[String] $service_provider,
