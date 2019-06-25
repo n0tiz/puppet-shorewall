@@ -1,4 +1,5 @@
 define shorewall::config::interface (
+  Integer $order = 2,
   String $zone,
   String $interface,
   Array[String] $options = []
@@ -28,7 +29,7 @@ define shorewall::config::interface (
   concat::fragment {"interface-${title}":
     content => template('shorewall/interface.erb'),
     target => '/etc/shorewall/interfaces',
-    order => 2,
+    order => $order,
     notify => $notify,
   }
 }

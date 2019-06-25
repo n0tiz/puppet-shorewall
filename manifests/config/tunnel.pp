@@ -1,4 +1,5 @@
 define shorewall::config::tunnel (
+  Integer $order = 2,
   String $type,
   String $zone,
   String $gateway,
@@ -29,7 +30,7 @@ define shorewall::config::tunnel (
   concat::fragment {"tunnel-${title}":
     content => template('shorewall/tunnel.erb'),
     target => '/etc/shorewall/tunnels',
-    order => 2,
+    order => $order,
     notify => $notify,
   }
 }

@@ -1,4 +1,5 @@
 define shorewall::config::policy (
+  Integer $order = 2,
   String $source,
   String $dest,
   Enum['ACCEPT', 'DROP', 'REJECT', 'BLACKLIST', 'QUEUE', 'NFQUEUE', 'CONTINUE', 'NONE'] $policy,

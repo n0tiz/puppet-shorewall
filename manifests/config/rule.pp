@@ -1,4 +1,5 @@
 define shorewall::config::rule (
+  Integer $order = 2,
   String $action,
   String $source,
   String $dest,
@@ -37,7 +38,7 @@ define shorewall::config::rule (
   concat::fragment {"rule-${title}":
     content => template('shorewall/rule.erb'),
     target => '/etc/shorewall/rules',
-    order => 2,
+    order => $order,
     notify => $notify,
   }
 }

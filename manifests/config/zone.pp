@@ -1,4 +1,5 @@
 define shorewall::config::zone (
+  Integer $order = 2,
   String $zone,
   Enum['ip', 'ipv4', 'ipv6', 'ipsec', 'ipsec4', 'ipsec6', 'firewall', 'bport', 'vserver', 'loopback', 'local'] $type,
   Array[String] $options = [],
@@ -30,7 +31,7 @@ define shorewall::config::zone (
   concat::fragment {"zone-${title}":
     content => template('shorewall/zone.erb'),
     target => '/etc/shorewall/zones',
-    order => 2,
+    order => $order,
     notify => $notify,
   }
 }
