@@ -12,11 +12,6 @@ define shorewall::config::policy (
   } else {
     $notify = undef
   }
-  if $source == 'all' and $dest == 'all' {
-    $order = 3
-  } else {
-    $order = 2
-  }
   if ! defined(Concat['/etc/shorewall/policy']) {
     concat {'/etc/shorewall/policy':
       ensure => present,
