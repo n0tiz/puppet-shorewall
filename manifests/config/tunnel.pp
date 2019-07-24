@@ -2,8 +2,8 @@ define shorewall::config::tunnel (
   Integer $order = 2,
   String $type,
   String $zone,
-  String $gateway,
-  String $gateway_zone
+  String $gateway = '',
+  String $gateway_zone = ''
 ) {
   if $shorewall::service_manage == true {
     $notify = Service['shorewall']
